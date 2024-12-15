@@ -130,7 +130,7 @@ const Page = () => {
 
             <CardTitle className='text-xl capitalize'>{jsonFullInfo?.name}</CardTitle>
             
-            <CardDescription>Shared by: <span className='font-bold tracking-wider'>{jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson?.split('@')[0]}</span> </CardDescription>
+            {!userId && <CardDescription>Shared by: <span className='font-bold tracking-wider'>{jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson?.split('@')[0]}</span> </CardDescription>}
           
           </CardHeader>
 
