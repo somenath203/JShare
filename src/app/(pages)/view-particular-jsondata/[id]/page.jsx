@@ -6,7 +6,7 @@ import axios from "axios";
 import { LoaderCircle } from "lucide-react";
 import dynamic from 'next/dynamic';
 import Link from "next/link";
-import { useAuth } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -30,7 +30,7 @@ const Page = () => {
   const id = params?.id;
 
 
-  const { userId } = useAuth();
+  const { user } = useUser();
   
 
   const [ jsonFullInfo, setJsonFullInfo ] = useState({});
@@ -130,7 +130,7 @@ const Page = () => {
 
             <CardTitle className='text-xl capitalize'>{jsonFullInfo?.name}</CardTitle>
             
-            {!userId && <CardDescription>Shared by: <span className='font-bold tracking-wider'>{jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson?.split('@')[0]}</span> </CardDescription>}
+            {user?.emailAddresses[0]?.emailAddress !== jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson && <CardDescription>Shared by: <span className='font-bold tracking-wider'>{jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson?.split('@')[0]}</span> </CardDescription>}
           
           </CardHeader>
 
@@ -155,7 +155,7 @@ const Page = () => {
 
           <CardFooter className='absolute flex items-center justify-center bottom-4 left-1/2 transform -translate-x-1/2'>
             
-            {!userId ? <Link href={process.env.NEXT_PUBLIC_WEBSITE_BASE_URL} target='_blank' className='flex items-center justify-center'>
+            {!user?.id ? <Link href={process.env.NEXT_PUBLIC_WEBSITE_BASE_URL} target='_blank' className='flex items-center justify-center'>
 
               <p className='text-center text-sm tracking-wide text-blue-500 font-semibold hover:underline'>Want to create and share JSON effortlessly? Visit JShare and get started today!</p>
 
