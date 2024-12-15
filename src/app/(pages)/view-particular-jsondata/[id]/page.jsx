@@ -124,7 +124,7 @@ const Page = () => {
 
           </Alert>
 
-        ) : jsonFullInfo && <Card className='w-11/12 h-80 overflow-y-scroll'>
+        ) : jsonFullInfo && <Card className='w-full lg:w-11/12 h-80 overflow-auto'>
 
           <CardHeader>
 
@@ -137,17 +137,13 @@ const Page = () => {
           <CardContent>
 
             {jsonFullInfo?.content && (
-              
-              <div className='bg-slate-100 p-4 rounded-xl'>
 
-                <ReactJson
-                  src={JSON.parse(jsonFullInfo?.content)}
-                  enableClipboard={true}
-                  displayDataTypes={false}
-                  displayObjectSize={false}
-                />
-
-              </div>
+              <ReactJson
+                src={JSON.parse(jsonFullInfo?.content)}
+                enableClipboard={true}
+                displayDataTypes={false}
+                displayObjectSize={false}
+              />
 
             )}
 
