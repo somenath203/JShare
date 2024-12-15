@@ -116,15 +116,15 @@ const Page = () => {
 
           <Alert variant="destructive">
 
-            <AlertTitle className='text-lg font-medium tracking-wider'>Error</AlertTitle>
+            <AlertTitle className='text-sm lg:text-lg font-medium tracking-wider'>Error</AlertTitle>
 
-            <AlertDescription className='text-xl font-medium tracking-wider'>
+            <AlertDescription className='text-base lg:text-xl font-medium tracking-wider'>
               {errorMessage}
             </AlertDescription>
 
           </Alert>
 
-        ) : jsonFullInfo && <Card className='relative w-11/12 h-80 overflow-y-scroll'>
+        ) : jsonFullInfo && <Card className='w-11/12 h-80 overflow-y-scroll'>
 
           <CardHeader>
 
@@ -153,7 +153,7 @@ const Page = () => {
 
           </CardContent>
 
-          <CardFooter className='absolute flex items-center justify-center bottom-4 left-1/2 transform -translate-x-1/2'>
+          <CardFooter className='flex items-center justify-center'>
             
             {!user?.id ? <Link href={process.env.NEXT_PUBLIC_WEBSITE_BASE_URL} target='_blank' className='flex items-center justify-center'>
 

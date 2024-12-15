@@ -129,7 +129,7 @@ const AddNewJsonDataModal = ({ fetchAllJsonDataOfCurrentlyLoggedInUser }) => {
           </div>
 
 
-          <AlertDialogFooter className='flex items-end justify-center gap-2'>
+          <AlertDialogFooter>
 
               <Button 
                 type='button' 

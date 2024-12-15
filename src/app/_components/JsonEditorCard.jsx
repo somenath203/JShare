@@ -104,7 +104,7 @@ const JsonEditorCard = () => {
 
 
   return (
-    <Card className='relative mb-10 w-full lg:w-11/12 h-80 overflow-y-scroll'>
+    <Card className='mb-10 w-full h-80 overflow-y-scroll'>
 
         <CardHeader>
 
@@ -126,7 +126,7 @@ const JsonEditorCard = () => {
             
         </CardContent>
 
-        <CardFooter className='absolute bottom-3'>
+        <CardFooter className='mt-5'>
             
             <AddNewJsonDataModal 
               fetchAllJsonDataOfCurrentlyLoggedInUser={fetchAllJsonDataOfCurrentlyLoggedInUser}
