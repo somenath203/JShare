@@ -104,7 +104,7 @@ const JsonEditorCard = () => {
 
 
   return (
-    <Card className='relative mb-10 w-11/12 h-80 overflow-y-scroll'>
+    <Card className='relative mb-10 w-full lg:w-11/12 h-80 overflow-y-scroll'>
 
         <CardHeader>
 
