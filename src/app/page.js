@@ -110,7 +110,7 @@ const Page = () => {
               <span className="text-xs text-slate-500">Shared by</span>
               <span className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium px-2.5 py-0.5 rounded-full">
                 <Mail className="size-3 text-emerald-600" />
-                somm@jsondrop.dev
+                somenathchoudhury38@gmail.com
               </span>
             </div>
           </div>
@@ -122,14 +122,14 @@ const Page = () => {
               {"  "}
               <span className="text-sky-600">&quot;name&quot;</span>
               <span className="text-slate-400">: </span>
-              <span className="text-emerald-600">&quot;Somm&quot;</span>
+              <span className="text-emerald-600">&quot;Somenath Choudhury&quot;</span>
               <span className="text-slate-400">,</span>
               {"\n"}
               {"  "}
               <span className="text-sky-600">&quot;role&quot;</span>
               <span className="text-slate-400">: </span>
               <span className="text-emerald-600">
-                &quot;Full Stack Developer&quot;
+                &quot;Full Stack Developer and AI Enthusiast&quot;
               </span>
               <span className="text-slate-400">,</span>
               {"\n"}
@@ -144,7 +144,7 @@ const Page = () => {
 
           <div className="flex items-center justify-center px-5 py-3 border-t border-slate-200 bg-slate-50">
             <span className="text-xs text-slate-500 font-mono">
-              jsondrop.vercel.app/view-particular-jsondata/8fk2n1
+              {process.env.NEXT_PUBLIC_WEBSITE_BASE_URL}/view-particular-jsondata/8fk2n1
             </span>
           </div>
         </div>
