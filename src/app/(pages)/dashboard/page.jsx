@@ -37,13 +37,13 @@ const Page = async () => {
 
 
   return (
-    <div>
-    
-      <div className="my-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 lg:py-14">
 
-        <h1 className="text-center lg:text-left text-2xl lg:text-3xl font-bold">Dashboard</h1>
+      <div className="mb-8 pb-6 border-b border-slate-200 flex flex-col items-center lg:items-start gap-1">
 
-        <p className="text-muted-foreground text-center lg:text-left">Manage your JSON data and share with others.</p>
+        <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">Dashboard</h1>
+
+        <p className="text-slate-500 text-sm lg:text-base text-center lg:text-left">Manage your JSON data and share with others.</p>
 
       </div>
 

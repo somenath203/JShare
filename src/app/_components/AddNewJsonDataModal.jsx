@@ -4,7 +4,7 @@ import { useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
 import axios from 'axios';
-import { LoaderCircle } from 'lucide-react';
+import { LoaderCircle, Plus } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { Button } from "@/components/ui/button";
@@ -80,7 +80,13 @@ const AddNewJsonDataModal = ({ fetchAllJsonDataOfCurrentlyLoggedInUser }) => {
   return (
     <>
 
-      <Button onClick={() => setOpenModal(true)}>Add JSON Data</Button>
+      <Button 
+        onClick={() => setOpenModal(true)}
+        className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2"
+      >
+        <Plus className="size-4" />
+        Add JSON data
+      </Button>
 
 
       <AlertDialog open={openModal} onOpenChange={setOpenModal}>
@@ -89,24 +95,24 @@ const AddNewJsonDataModal = ({ fetchAllJsonDataOfCurrentlyLoggedInUser }) => {
 
           <AlertDialogHeader>
 
-            <AlertDialogTitle>Create New JSON</AlertDialogTitle>
+            <AlertDialogTitle className="text-slate-900">Create new JSON</AlertDialogTitle>
 
-            <AlertDialogDescription>
+            <AlertDialogDescription className="text-slate-500">
               Save your JSON data
             </AlertDialogDescription>
 
           </AlertDialogHeader>
 
 
-          <div className="grid gap-4">
+          <div className="grid gap-5">
 
             <div className="grid gap-2">
 
-              <Label>Name of JSON Data</Label>
+              <Label className="text-slate-700">Name of JSON data</Label>
 
               <Input 
-                placeholder='enter your JSON name' 
-                className='rounded-none'
+                placeholder='Enter your JSON name' 
+                className='rounded-md border-slate-200 focus-visible:ring-emerald-500'
                 onChange={(e) => setJsonNameInput(e.target.value)}
               />
 
@@ -114,13 +120,13 @@ const AddNewJsonDataModal = ({ fetchAllJsonDataOfCurrentlyLoggedInUser }) => {
 
             <div className="grid gap-2">
 
-              <Label>Enter the JSON Data</Label>
+              <Label className="text-slate-700">Enter the JSON data</Label>
 
               <CodeMirror 
                 value={jsonDataInput} 
                 extensions={[json()]} 
                 onChange={(value) => setJsonDataInput(value)}
-                className='border shadow-sm h-96 overflow-y-auto'
+                className='border border-slate-200 rounded-md shadow-sm h-96 overflow-y-auto'
               />
 
             </div>
@@ -136,13 +142,15 @@ const AddNewJsonDataModal = ({ fetchAllJsonDataOfCurrentlyLoggedInUser }) => {
                 variant='secondary'
                 disabled={loading}
                 onClick={() => setOpenModal(false)}
+                className="border border-slate-200 text-slate-700 hover:bg-slate-50"
               >Close</Button>
 
               <Button 
                 onClick={handleSaveJSONData}
                 disabled={!jsonNameInput || !jsonDataInput || loading}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white disabled:opacity-50"
               >
-                {loading ? <LoaderCircle className='transition-all animate-spin duration-400' /> : 'Save'}
+                {loading ? <LoaderCircle className='size-4 animate-spin' /> : 'Save'}
               </Button>
 
           </AlertDialogFooter>

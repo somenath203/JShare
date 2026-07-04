@@ -104,17 +104,17 @@ const JsonEditorCard = () => {
 
 
   return (
-    <Card className='mb-10 w-full h-80 overflow-y-auto'>
+    <Card className='mb-10 w-full border-slate-200 shadow-sm'>
 
-        <CardHeader>
+        <CardHeader className='border-b border-slate-200 pb-5'>
 
-            <CardTitle className='tracking-wide'>Save your JSON Data</CardTitle>
+            <CardTitle className='text-xl text-slate-900 tracking-tight'>Your JSON data</CardTitle>
 
-            <CardDescription>View and share your saved JSON data</CardDescription>
+            <CardDescription className='text-slate-500'>View and share your saved JSON data</CardDescription>
 
         </CardHeader>
 
-        <CardContent>
+        <CardContent className='pt-6 max-h-96 overflow-y-auto'>
             
             <JsonHistoryTable 
               allJSONData={allJSONData} 
@@ -126,7 +126,7 @@ const JsonEditorCard = () => {
             
         </CardContent>
 
-        <CardFooter className='mt-5'>
+        <CardFooter className='border-t border-slate-200 pt-5'>
             
             <AddNewJsonDataModal 
               fetchAllJsonDataOfCurrentlyLoggedInUser={fetchAllJsonDataOfCurrentlyLoggedInUser}

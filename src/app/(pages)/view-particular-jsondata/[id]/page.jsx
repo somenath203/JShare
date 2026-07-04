@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { LoaderCircle } from "lucide-react";
+import { LoaderCircle, Braces, AlertCircle, Mail, Home } from "lucide-react";
 import dynamic from 'next/dynamic';
 import Link from "next/link";
 import { useUser } from '@clerk/nextjs';
@@ -102,39 +102,67 @@ const Page = () => {
 
   
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-10">
+
+      <Link href="/" className="flex items-center gap-2 mb-8">
+
+        <Braces className="size-6 text-emerald-600" />
+
+        <span className="font-semibold text-lg tracking-wide text-slate-900">JsonDrop</span>
+
+      </Link>
 
       { loading ? (
 
-          <div>
+          <div className="flex flex-col items-center gap-3 py-16">
 
-            <LoaderCircle className='size-10 transition-all animate-spin duration-700' />
+            <LoaderCircle className='size-8 text-slate-400 animate-spin' />
+
+            <p className="text-sm text-slate-400">Loading JSON data</p>
 
           </div>
 
         ) : isError ? (
 
-          <Alert variant="destructive">
+          <Alert variant="destructive" className="w-full lg:w-2/3 max-w-lg">
 
-            <AlertTitle className='text-sm lg:text-lg font-medium tracking-wider'>Error</AlertTitle>
+            <AlertCircle className="size-4" />
 
-            <AlertDescription className='text-base lg:text-xl font-medium tracking-wider'>
+            <AlertTitle className='text-sm lg:text-base font-semibold'>Error</AlertTitle>
+
+            <AlertDescription className='text-sm lg:text-base'>
               {errorMessage}
             </AlertDescription>
 
           </Alert>
 
-        ) : jsonFullInfo && <Card className='w-full lg:w-11/12 h-80 overflow-auto'>
+        ) : jsonFullInfo && <Card className='w-full lg:w-11/12 max-w-4xl border-slate-200 shadow-sm'>
 
-          <CardHeader>
+          <CardHeader className="border-b border-slate-200 pb-5">
 
-            <CardTitle className='text-xl capitalize'>{jsonFullInfo?.name}</CardTitle>
+            <CardTitle className='text-xl text-slate-900 capitalize tracking-tight'>{jsonFullInfo?.name}</CardTitle>
             
-            {user?.emailAddresses[0]?.emailAddress !== jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson && <CardDescription>Shared by: <span className='font-bold tracking-wider'>{jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson?.split('@')[0]}</span> </CardDescription>}
+            {user?.emailAddresses[0]?.emailAddress !== jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson && (
+
+              <CardDescription className="text-slate-500 flex items-center gap-2 mt-1">
+
+                <span>Shared by</span>
+
+                <span className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-full">
+
+                  <Mail className="size-3.5 text-emerald-600" />
+
+                  {jsonFullInfo?.emailIdOfTheProfileWhoCreatedTheJson}
+
+                </span>
+
+              </CardDescription>
+
+            )}
           
           </CardHeader>
 
-          <CardContent>
+          <CardContent className="pt-6 max-h-96 overflow-auto">
 
             {jsonFullInfo?.content && (
 
@@ -143,21 +171,22 @@ const Page = () => {
                 enableClipboard={true}
                 displayDataTypes={false}
                 displayObjectSize={false}
+                style={{ fontSize: '13px', fontFamily: 'var(--font-mono, monospace)' }}
               />
 
             )}
 
           </CardContent>
 
-          <CardFooter className='flex items-center justify-center'>
+          <CardFooter className='flex flex-col items-center justify-center gap-3 border-t border-slate-200 pt-5'>
             
             {!user?.id ? <Link href={process.env.NEXT_PUBLIC_WEBSITE_BASE_URL} target='_blank' className='flex items-center justify-center'>
 
-              <p className='text-center text-sm tracking-wide text-blue-500 font-semibold hover:underline'>Want to create and share JSON effortlessly? Visit JShare and get started today!</p>
+              <p className='text-center text-sm text-emerald-700 font-medium hover:underline'>Store and share JSON with ease using JsonDrop.</p>
 
             </Link> : <Link href='/dashboard' className='flex items-center justify-center'>
 
-              <p className='text-center text-sm tracking-wide text-blue-500 font-semibold hover:underline'>Back to Dashboard</p>
+              <p className='text-center text-sm text-emerald-700 font-medium hover:underline'>Back to dashboard</p>
 
             </Link>}
 

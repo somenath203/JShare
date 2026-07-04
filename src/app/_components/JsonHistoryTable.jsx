@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Share2 } from 'lucide-react';
-import { LoaderCircle, Trash, Clipboard } from 'lucide-react';
-import { useState } from 'react';
-import Link from 'next/link';
-import { toast } from 'sonner';
+import { Share2 } from "lucide-react";
+import { LoaderCircle, Trash, Clipboard, FileJson } from "lucide-react";
+import { useState } from "react";
+import Link from "next/link";
+import { toast } from "sonner";
 
 import {
   Table,
@@ -14,7 +14,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from "@/components/ui/table";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -24,144 +24,164 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
+const JsonHistoryTable = ({
+  allJSONData,
+  loadingAllJSONData,
+  deleteJSONData,
+  loadingDeleteJSONData,
+  idOfTheJSONToBeDeleted,
+}) => {
+  const [openShareJSONModal, setOpenShareJSONModal] = useState(false);
 
+  const [idOfTheJSONData, setIdOfTheJSONData] = useState(null);
 
-const JsonHistoryTable = ({ allJSONData, loadingAllJSONData, deleteJSONData, loadingDeleteJSONData, idOfTheJSONToBeDeleted }) => {
-
-
-  const [ openShareJSONModal, setOpenShareJSONModal ] = useState(false);
-
-
-  const [ idOfTheJSONData, setIdOfTheJSONData ] = useState(null);
-
-  const [ nameOfTheJSONData, setNameOfTheJSONData ] = useState('');
-
+  const [nameOfTheJSONData, setNameOfTheJSONData] = useState("");
 
   const copyJSONDataURLToClipboard = () => {
+    navigator.clipboard.writeText(
+      `${process.env.NEXT_PUBLIC_WEBSITE_BASE_URL}/view-particular-jsondata/${idOfTheJSONData}`,
+    );
 
-    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_WEBSITE_BASE_URL}/view-particular-jsondata/${idOfTheJSONData}`);
+    toast.success("url successfully copied to clipboard.");
+  };
 
-    toast.success('url successfully copied to clipboard.');
-
-  }
-  
   return (
     <>
+      {loadingAllJSONData ? (
+        <div className="flex items-center justify-center py-16">
+          <LoaderCircle className="size-5 text-slate-400 animate-spin" />
+        </div>
+      ) : allJSONData?.length === 0 ? (
+        <div className="flex flex-col items-center justify-center gap-2 py-16 border border-dashed border-slate-200 rounded-lg">
+          <FileJson className="size-8 text-slate-300" />
 
-      {loadingAllJSONData ? <div className='flex items-center justify-center'>
+          <p className="text-slate-500 text-sm">
+            No JSON data yet. Add one to get started.
+          </p>
+        </div>
+      ) : (
+        <div className="border border-slate-200 rounded-lg overflow-hidden">
+          <Table>
+            <TableCaption className="text-slate-400 text-xs pb-4">
+              A list of your recent JSON data.
+            </TableCaption>
 
-      <LoaderCircle className='transition-all duration-700 animate-spin mt-2' />
+            <TableHeader>
+              <TableRow className="hover:bg-transparent border-slate-200">
+                <TableHead className="text-left text-slate-500 font-medium">
+                  Name
+                </TableHead>
+                <TableHead className="text-center text-slate-500 font-medium">
+                  Share
+                </TableHead>
+                <TableHead className="text-center text-slate-500 font-medium">
+                  Action
+                </TableHead>
+              </TableRow>
+            </TableHeader>
 
-      </div> : allJSONData?.length === 0 ? <div>
+            <TableBody>
+              {allJSONData.map((data) => (
+                <TableRow
+                  key={data.id}
+                  className="border-slate-200 hover:bg-slate-50"
+                >
+                  <TableCell className="text-left font-medium text-slate-800">
+                    {data.name}
+                  </TableCell>
 
-        <p className='text-center text-muted-foreground tracking-wider mt-2'>No JSON data to display Please add one.</p>
-
-      </div> : <Table>
-
-        <TableCaption>A list of your recent json data.</TableCaption>
-
-        <TableHeader>
-
-            <TableRow>
-                <TableHead className='text-center'>Name</TableHead>
-                <TableHead className='text-center'>Share</TableHead>
-                <TableHead className='text-center'>Action</TableHead>
-            </TableRow>
-
-        </TableHeader>
-
-        <TableBody>
-
-            {allJSONData.map((data) => (
-                <TableRow key={data.id}>
-
-                    <TableCell className='text-center'>{data.name}</TableCell>
-
-                    <TableCell> 
-
-                      <Share2 
-                        className='size-5 cursor-pointer m-auto'
+                  <TableCell>
+                    <div className="flex items-center justify-center">
+                      <button
+                        className="inline-flex items-center justify-center size-8 rounded-md hover:bg-emerald-50 transition-colors"
                         onClick={() => {
-
                           setIdOfTheJSONData(data.id);
 
                           setNameOfTheJSONData(data.name);
 
                           setOpenShareJSONModal(true);
-
                         }}
-                      /> 
-                      
-                    </TableCell>
-                    
-                    <TableCell>
+                      >
+                        <Share2 className="size-4 text-emerald-600" />
+                      </button>
+                    </div>
+                  </TableCell>
 
-                      {loadingDeleteJSONData && idOfTheJSONToBeDeleted && data.id && idOfTheJSONToBeDeleted === data.id ? <LoaderCircle className='size-5 text-red-600 m-auto transition-all animate-spin duration-700' /> : <Trash 
-                        className='size-5 cursor-pointer text-red-600 m-auto'
-                        onClick={() => deleteJSONData(data.id)}
-                      />}
-
-                    </TableCell>
-
+                  <TableCell>
+                    <div className="flex items-center justify-center">
+                      {loadingDeleteJSONData &&
+                      idOfTheJSONToBeDeleted &&
+                      data.id &&
+                      idOfTheJSONToBeDeleted === data.id ? (
+                        <div className="inline-flex items-center justify-center size-8">
+                          <LoaderCircle className="size-4 text-red-500 animate-spin" />
+                        </div>
+                      ) : (
+                        <button
+                          className="inline-flex items-center justify-center size-8 rounded-md hover:bg-red-50 transition-colors"
+                          onClick={() => deleteJSONData(data.id)}
+                        >
+                          <Trash className="size-4 text-red-500" />
+                        </button>
+                      )}
+                    </div>
+                  </TableCell>
                 </TableRow>
-            ))}
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      )}
 
-        </TableBody>
-
-      </Table>}
-
-
-      <AlertDialog open={openShareJSONModal} onOpenChange={setOpenShareJSONModal}>
-
+      <AlertDialog
+        open={openShareJSONModal}
+        onOpenChange={setOpenShareJSONModal}
+      >
         <AlertDialogContent>
-
           <AlertDialogHeader>
+            <AlertDialogTitle className="text-slate-900">
+              Your JSON data URL
+            </AlertDialogTitle>
 
-            <AlertDialogTitle>Your JSON Data URL</AlertDialogTitle>
-
-            <AlertDialogDescription>
-              Sharable link for your JSON data. Copy and share the link with your friend.
+            <AlertDialogDescription className="text-slate-500">
+              Sharable link for your JSON data. Copy and share the link with
+              your friend.
             </AlertDialogDescription>
-
           </AlertDialogHeader>
 
-          <Alert>
+          <Alert className="border-slate-200 bg-slate-50">
+            <AlertTitle className="text-center text-lg font-semibold text-slate-900 capitalize">
+              {nameOfTheJSONData}
+            </AlertTitle>
 
-            <AlertTitle className='text-center text-xl capitalize'>{nameOfTheJSONData}</AlertTitle>
-
-            <AlertDescription className='text-center'>
-
+            <AlertDescription className="text-center">
               <Link href={`/view-particular-jsondata/${idOfTheJSONData}`}>
-
-                <p className='tracking-wider'>{process.env.NEXT_PUBLIC_WEBSITE_BASE_URL}/view-particular-jsondata/${idOfTheJSONData}</p>
-
+                <p className="text-sm text-emerald-700 tracking-wide break-all hover:underline">
+                  {process.env.NEXT_PUBLIC_WEBSITE_BASE_URL}
+                  /view-particular-jsondata/${idOfTheJSONData}
+                </p>
               </Link>
 
-              <Clipboard 
-                className='mt-3 size-5 m-auto text-green-600 cursor-pointer'
+              <button
+                className="mt-3 inline-flex items-center justify-center size-8 rounded-md hover:bg-emerald-50 transition-colors mx-auto"
                 onClick={copyJSONDataURLToClipboard}
-              />
-
+              >
+                <Clipboard className="size-4 text-emerald-600" />
+              </button>
             </AlertDescription>
-
           </Alert>
 
-
           <AlertDialogFooter>
-            <AlertDialogCancel>Close</AlertDialogCancel>
+            <AlertDialogCancel className="border-slate-200 text-slate-700 hover:bg-slate-50">
+              Close
+            </AlertDialogCancel>
           </AlertDialogFooter>
-
         </AlertDialogContent>
-        
       </AlertDialog>
-
-
     </>
-
-  )
+  );
 };
-
 
 export default JsonHistoryTable;

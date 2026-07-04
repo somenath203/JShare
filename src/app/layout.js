@@ -10,8 +10,8 @@ const rubik = Rubik({subsets: ['latin']});
 
 
 export const metadata = {
-  title: "JShare",
-  description: "JShare: A platform for sharing and managing JSON data effortlessly.",
+  title: "JsonDrop",
+  description: "JsonDrop: A platform for sharing and managing JSON data effortlessly.",
 };
 
 export default function RootLayout({ children }) {
