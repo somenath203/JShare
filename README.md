@@ -1,8 +1,8 @@
-# JShare
+# JsonDrop
 
 ## ✨ Introduction
 
-🌟 **JShare** is a user-friendly web application designed to help you store and share your JSON data with ease. Whether you're a developer or someone who works with JSON, JShare makes it super simple to manage and share JSON data via sharable links.
+🌟 **JsonDrop** is a user-friendly web application designed to help you store and share your JSON data with ease. Whether you're a developer or someone who works with JSON, JsonDrop makes it super simple to manage and share JSON data via sharable links.
 
 ---
 
@@ -19,7 +19,7 @@
 
 ## 🛠️ Technologies Used
 
-Here’s the stack of tools and technologies behind JShare:
+Here’s the stack of tools and technologies behind JsonDrop:
 
 - **Next.js** 🖥️: For a robust and scalable frontend and backend.
 - **Tailwind CSS** 🎨: To create a beautiful and responsive UI.
