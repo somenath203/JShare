@@ -232,34 +232,18 @@ const AddNewJsonDataModal = ({ fetchAllJsonDataOfCurrentlyLoggedInUser }) => {
           </div>
 
           <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+            
             <p className="font-medium mb-2">Common mistakes</p>
 
             <ul className="list-disc pl-5 space-y-1.5">
-              <li>
-                Property names must be wrapped in double quotes —{" "}
-                <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">
-                  rollNo
-                </code>{" "}
-                should be{" "}
-                <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">
-                  &quot;rollNo&quot;
-                </code>
-              </li>
+              <li>Property names must be wrapped in double quotes — <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">rollNo</code> should be <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">&quot;rollNo&quot;</code></li>
               <li>String values must use double quotes, not single quotes.</li>
-              <li>
-                Every object must be wrapped in{" "}
-                <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">{`{ }`}</code>
-              </li>
-              <li>
-                Multiple objects must sit inside an array using{" "}
-                <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">
-                  [ ]
-                </code>
-              </li>
-              <li>
-                JavaScript object syntax isn't allowed — only standard JSON.
-              </li>
+              <li>Every object must be wrapped in <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">{`{ }`}</code></li>
+              <li>Multiple objects must sit inside an array using <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">[ ]</code></li>
+              <li>No trailing commas — remove the comma after the last item in an object or array.</li>
+              <li>Comments aren't allowed in JSON, even <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">{`//`}</code> ones.</li>
             </ul>
+
           </div>
 
           <AlertDialogFooter>
