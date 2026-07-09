@@ -65,7 +65,7 @@ const Page = () => {
       <div className="w-full max-w-2xl flex flex-col items-center gap-6 pt-20 lg:pt-28">
         <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-200 bg-emerald-50 text-sm text-emerald-700 font-mono">
           <Braces className="w-3.5 h-3.5" />
-          <span>JsonDrop</span>
+          <span>JsonHive</span>
         </div>
 
         <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 text-center tracking-tight">

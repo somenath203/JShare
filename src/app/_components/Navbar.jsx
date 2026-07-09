@@ -29,7 +29,7 @@ const Navbar = () => {
 
             <Braces className="size-6 lg:size-7 text-emerald-600" />
 
-            <span className="font-semibold text-lg lg:text-xl tracking-wide text-slate-900">JsonDrop</span>
+            <span className="font-semibold text-lg lg:text-xl tracking-wide text-slate-900">JsonHive</span>
 
           </Link>
 

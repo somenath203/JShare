@@ -1,31 +1,30 @@
-# JsonDrop
+# JsonHive
 
 ## ✨ Introduction
 
-🌟 **JsonDrop** is a user-friendly web application designed to help you store and share your JSON data with ease. Whether you're a developer or someone who works with JSON, JsonDrop makes it super simple to manage and share JSON data via sharable links.
+🌟 **JsonHive** is a user-friendly web application that lets you securely create, store, manage, and share JSON documents with ease. Whether you're a developer or someone who frequently works with JSON, JsonHive makes it simple to organize your JSON data and share it through public shareable links.
 
 ---
 
 ## 🎯 Features
 
-✅ **Secure Authentication**: Log in safely with Clerk authentication.  
-✅ **Create and Edit JSON**: Use a sleek editor powered by **Monaco Editor** to write and save JSON with a custom name.  
-✅ **Share Easily**: Generate sharable links for your JSON that anyone can access, even without logging in.  
+✅ **Secure Authentication**: Sign in securely using Clerk Authentication.  
+✅ **Create & Edit JSON**: Write and edit JSON documents using a modern editor powered by **CodeMirror 6**.  
+✅ **Public Sharing**: Generate shareable links that anyone can access without signing in.  
 ✅ **Beautiful JSON Viewer**: View JSON data in a clean, structured format with **React JSON View**.  
-✅ **Data Management**: Delete your JSON data anytime you want.  
-✅ **Seamless Access**: Sharable links provide unrestricted access to your JSON data - no login needed!
+✅ **Data Management**: Organize and delete your saved JSON documents whenever needed.
 
 ---
 
 ## 🛠️ Technologies Used
 
-Here’s the stack of tools and technologies behind JsonDrop:
-
-- **Next.js** 🖥️: For a robust and scalable frontend and backend.
-- **Tailwind CSS** 🎨: To create a beautiful and responsive UI.
-- **ShadCN UI** ✨: For accessible and customizable UI components.
-- **Clerk Authentication** 🔒: For secure user authentication.
-- **Prisma** 📦: As the ORM for interacting with the database.
-- **Neon PostgreSQL Database** 🗄️: For storing user data and JSON content.
-- **@uiw/react-codemirror & @codemirror/lang-json** 💻: To provide a modern JSON editor experience.
-- **React JSON View** 👀: For clean and structured JSON visualization.
+- **Next.js** 🖥️: Full-stack React framework for building the application.
+- **React** ⚛️: Powers the interactive user interface.
+- **TypeScript** 🔷: Provides static typing for improved developer experience and maintainability.
+- **Tailwind CSS** 🎨: Utility-first CSS framework for responsive styling.
+- **shadcn/ui** ✨: Accessible and customizable UI components.
+- **Clerk Authentication** 🔒: Secure user authentication and user management.
+- **Prisma** 📦: Type-safe ORM for interacting with the database.
+- **Neon PostgreSQL** 🗄️: Cloud-hosted PostgreSQL database for storing user and JSON data.
+- **@uiw/react-codemirror & @codemirror/lang-json** 💻: CodeMirror 6-based JSON editor.
+- **React JSON View** 👀: Structured visualization of JSON data.
