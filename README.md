@@ -26,5 +26,5 @@
 - **Clerk Authentication** 🔒: Secure user authentication and user management.
 - **Prisma** 📦: Type-safe ORM for interacting with the database.
 - **Neon PostgreSQL** 🗄️: Cloud-hosted PostgreSQL database for storing user and JSON data.
-- **@uiw/react-codemirror & @codemirror/lang-json** 💻: CodeMirror 6-based JSON editor.
+- **@uiw/react-codemirror & @codemirror/lang-json** 💻: CodeMirror JSON editor.
 - **React JSON View** 👀: Structured visualization of JSON data.
